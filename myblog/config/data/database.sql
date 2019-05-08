@@ -1,7 +1,7 @@
 
 use mydb;
 
-CREATE TABLE `Corsinfo` (
+CREATE TABLE `Courseinfo` (
   `cours_id` int(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
   `cours_name` varchar(50),
   `have_exam` BOOLEAN,
@@ -21,7 +21,7 @@ CREATE TABLE `Real_cours` (
   `end_date` date,
   `price` int(11),
   `attendance_days`  varchar(255),
-    FOREIGN KEY (cours_id) REFERENCES Corsinfo (cours_id)
+    FOREIGN KEY (cours_id) REFERENCES Courseinfo (cours_id)
 
 );
 
