@@ -14,6 +14,8 @@ include_once '../table/Courseinfo.php';
 include_once '../config/DBClass.php';
 
 
+
+
 // get posted data
 //if($_SERVER['REQUEST_METHOD']=="POST"){
     $data = json_decode(file_get_contents('php://input'));
@@ -29,7 +31,6 @@ if(
     !empty($_POST['shortname']) &&
     !empty($_POST['summary']) &&
     !empty($_POST['marker']) &&
-    !empty($_POST['idnumber']) &&
     !empty($_POST['have_exam']) &&
     !empty($_POST['Practical_mark']) 
 ){
@@ -39,12 +40,16 @@ if(
     $courseinfo->have_exam=$_POST['have_exam'];
     $courseinfo->Practical_mark=$_POST['Practical_mark'];
 
+    $st= $courseinfo->read();
+    $count_course = $st->rowCount();
+    $jcourseinfo= json_decode(json_encode($st->fetchAll(PDO::FETCH_ASSOC)));
+
     $course_moodle = new Coursemoodle();
     $course_moodle->category =1;
     $course_moodle->fullname =$_POST['fullname'];
     $course_moodle->shortname =$_POST['shortname'];
     $course_moodle->summary =$_POST['summary'];
-    $course_moodle->idnumber =$_POST['idnumber'];
+    $course_moodle->idnumber =($jcourseinfo[$count_course-1]->cours_id)+1;
     $course_moodle->summaryformat =1;
     $course_moodle->format ='topics';
     $course_moodle->showgrades =1;

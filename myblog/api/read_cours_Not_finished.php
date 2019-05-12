@@ -14,7 +14,7 @@ $realcours = new Real_cours($connection);
 
 $stmt = $realcours->readcorsenotfinished();
 $count = $stmt->rowCount();
-if ($count < 0) {
+if ($count > 0) {
 
 
     $courses_not_finished = array();

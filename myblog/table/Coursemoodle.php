@@ -5,6 +5,7 @@ class Coursemoodle{
 
     // table name
     private $table_name = "mdl_course";
+    private $connection;
 
     // table columns
     public $category;
@@ -39,31 +40,17 @@ class Coursemoodle{
     public $cachere;
 
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /*public function __construct($connection){
+        $this->connection = $connection;
+    }*/
     public function __construct(){
     }
-
     //C
     public function create(){
     }
     //R
     public function read(){
-        $query = "SELECT c.name as family_name, p.id, p.sku, p.barcode, p.name, p.price, p.unit, p.quantity , p.minquantity, p.createdAt, p.updatedAt FROM" . $this->table_name . " p LEFT JOIN Family c ON p.family_id = c.id ORDER BY p.createdAt DESC";
-
+        $query = "SELECT category ,fullname ,shortname ,idnumber ,summary ,format  FROM " . $this->table_name ;
         $stmt = $this->connection->prepare($query);
 
         $stmt->execute();
