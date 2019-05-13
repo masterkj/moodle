@@ -18,13 +18,14 @@ include_once '../config/DBClass.php';
 
 // get posted data
 //if($_SERVER['REQUEST_METHOD']=="POST"){
-    $data = json_decode(file_get_contents('php://input'));
-    echo $data;
+ 
+ //   $data = json_decode(file_get_contents('php://input'));
+   // echo $data;
     
 $dbclass = new DBClass();
 $connection = $dbclass->getConnection();
-
-
+$increment_id_course = $DB->get_record_sql("SELECT `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'moodle' AND   TABLE_NAME   = 'mdl_course';");
+$increment_id_course= json_decode( json_encode($increment_id_course));
 // make sure data is not empty
 if(
     !empty($_POST['fullname']) &&
@@ -37,25 +38,23 @@ if(
  
     $courseinfo = new Courseinfo($connection);
     $courseinfo->cours_name=$_POST['fullname'];
+    $courseinfo->cours_id=$increment_id_course->auto_increment;
     $courseinfo->have_exam=$_POST['have_exam'];
     $courseinfo->Practical_mark=$_POST['Practical_mark'];
 
-    $st= $courseinfo->read();
-    $count_course = $st->rowCount();
-    $jcourseinfo= json_decode(json_encode($st->fetchAll(PDO::FETCH_ASSOC)));
 
     $course_moodle = new Coursemoodle();
     $course_moodle->category =1;
     $course_moodle->fullname =$_POST['fullname'];
     $course_moodle->shortname =$_POST['shortname'];
     $course_moodle->summary =$_POST['summary'];
-    $course_moodle->idnumber =($jcourseinfo[$count_course-1]->cours_id)+1;
+    $course_moodle->idnumber ='';
     $course_moodle->summaryformat =1;
     $course_moodle->format ='topics';
     $course_moodle->showgrades =1;
     $course_moodle->newsitems =5;
     $course_moodle->startdate =1557262800;
-    $course_moodle->enddate =1588626000;
+    $course_moodle->enddate ='';
     $course_moodle->marker =$_POST['marker'];
     $course_moodle->maxbytes =0;
     $course_moodle->legacyfiles =0;

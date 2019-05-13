@@ -5,9 +5,6 @@ header("Content-Type: application/json; charset=UTF-8");
 include_once '../table/Real_cours.php';
 include_once '../config/DBClass.php';
 
-
-
-
 $dbclass = new DBClass();
 $connection = $dbclass->getConnection();
 $realcours = new Real_cours($connection);

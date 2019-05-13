@@ -21,7 +21,7 @@ $courses_opject=json_decode ( json_encode($courses) );
 //merge table courseinfo an course moodle
 $i=0;
 while($i <sizeof($courses_opject)){
-  $stmt=  $courseinfo->select_id($courses_opject[$i]->idnumber);
+  $stmt=  $courseinfo->select_id($courses_opject[$i]->id);
   if( $st= $stmt->fetch()){
     $courseinfo_opject= json_decode(json_encode($st));
     $courses_opject[$i]->cours_name=$courseinfo_opject->cours_name;

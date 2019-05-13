@@ -24,19 +24,21 @@ class Courseinfo{
         $query = "INSERT INTO
                     " . $this->table_name . "
                     SET
-                    cours_name=:cours_name, have_exam=:have_exam, Practical_mark=:Practical_mark";
+                    cours_id=:cours_id, cours_name=:cours_name, have_exam=:have_exam, Practical_mark=:Practical_mark";
 
         // prepare query
         $stmt = $this->connection->prepare($query);
 
         // sanitize
     // $this->cours_id=htmlspecialchars(strip_tags($this->cours_id));
+        $this->cours_id=htmlspecialchars(strip_tags($this->cours_id));
         $this->cours_name=htmlspecialchars(strip_tags($this->cours_name));
         $this->have_exam=htmlspecialchars(strip_tags($this->have_exam));
         $this->Practical_mark=htmlspecialchars(strip_tags($this->Practical_mark));
 
         // bind values
     // $stmt->bindParam(":cours_id", $this->cours_id);
+        $stmt->bindParam(":cours_id", $this->cours_id);
         $stmt->bindParam(":cours_name", $this->cours_name);
         $stmt->bindParam(":have_exam", $this->have_exam);
         $stmt->bindParam(":Practical_mark", $this->Practical_mark);
@@ -52,7 +54,18 @@ class Courseinfo{
     public function select_id($id){
 
 
-        $query = "SELECT cours_id , cours_name ,have_exam ,Practical_mark FROM " . $this->table_name . " where cours_id = " .$id  ;
+        $query = "SELECT cours_id  ,cours_name ,have_exam ,Practical_mark FROM " . $this->table_name . " where cours_id = " .$id  ;
+        $stmt = $this->connection->prepare($query);
+
+        $stmt->execute();
+
+        return $stmt;
+    }
+
+    public function select_course_moodle_id($id){
+
+
+        $query = "SELECT cours_id ,course_moodle_id ,cours_name ,have_exam ,Practical_mark FROM " . $this->table_name . " where course_moodle_id = " .$id  ;
         $stmt = $this->connection->prepare($query);
 
         $stmt->execute();
@@ -63,7 +76,7 @@ class Courseinfo{
     public function read(){
 
 
-        $query = "SELECT cours_id , cours_name ,have_exam ,Practical_mark FROM " . $this->table_name ;
+        $query = "SELECT cours_id ,course_moodle_id, cours_name ,have_exam ,Practical_mark FROM " . $this->table_name ;
         $stmt = $this->connection->prepare($query);
 
         $stmt->execute();

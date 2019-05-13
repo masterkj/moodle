@@ -2,7 +2,7 @@
 use mydb;
 
 CREATE TABLE `Courseinfo` (
-  `cours_id` int(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+  `cours_id` int(11) UNSIGNED  PRIMARY KEY, 
   `cours_name` varchar(50),
   `have_exam` BOOLEAN,
   `Practical_mark` int(11)

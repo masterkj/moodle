@@ -50,12 +50,7 @@ class Coursemoodle{
     }
     //R
     public function read(){
-        $query = "SELECT category ,fullname ,shortname ,idnumber ,summary ,format  FROM " . $this->table_name ;
-        $stmt = $this->connection->prepare($query);
 
-        $stmt->execute();
-
-        return $stmt;
     }
     //U
     public function update(){}
