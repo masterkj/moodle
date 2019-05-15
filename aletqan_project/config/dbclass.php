@@ -4,7 +4,7 @@ class DBClass {
     private $host = "localhost";
     private $username = "root";
     private $password = "";
-    private $database = "mydb";
+    private $database = "aletqan";
 
     public $connection;
 

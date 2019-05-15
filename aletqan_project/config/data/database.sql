@@ -1,5 +1,5 @@
 
-use mydb;
+use aletqan;
 
 CREATE TABLE `Courseinfo` (
   `cours_id` int(11) UNSIGNED  PRIMARY KEY, 

@@ -13,14 +13,6 @@ include_once '../table/Coursemoodle.php';
 include_once '../table/Courseinfo.php';
 include_once '../config/DBClass.php';
 
-
-
-
-// get posted data
-//if($_SERVER['REQUEST_METHOD']=="POST"){
- 
- //   $data = json_decode(file_get_contents('php://input'));
-   // echo $data;
     
 $dbclass = new DBClass();
 $connection = $dbclass->getConnection();
