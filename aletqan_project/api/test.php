@@ -9,13 +9,19 @@ include_once '../table/groupmoodle.php';
 include_once '../table/Courseinfo.php';
 include_once '../config/DBClass.php';
 include_once '../lib/enrollib.php';
-
 require_once(__DIR__.'/../../config.php');
 require_once($CFG->dirroot.'/course/lib.php');
 require_once($CFG->dirroot.'/group/lib.php');
 require_once($CFG->dirroot.'/course/externallib.php');
+require_once($CFG->dirroot.'/lib/enrollib.php');
 //echo date('d-m-Y');
-first_payment(1,10,60);
+//first_payment(1,10,60);
+$coursecontext = context_course::instance(9);
+$user = new stdClass();
+$user->id =3;
+if(is_enrolled($coursecontext,$user))
+echo "true";
+else{echo "false";}
 //defined('MOODLE_INTERNAL') || die();
 //global $DB;
 

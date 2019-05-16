@@ -1,6 +1,9 @@
 <?php
 require_once(__DIR__.'/../../config.php');
 require_once($CFG->dirroot.'/lib/grouplib.php');//groups_is_member//groups_group_exists
+require_once($CFG->dirroot.'/lib/enrollib.php');//is_enrolled,
+
+
 include_once '../config/DBClass.php';
 include_once '../table/Student_payment.php';
 include_once '../table/Real_cours.php';
@@ -31,9 +34,22 @@ function first_payment($student_id,$group_id , $Quantity){
 
         }else{echo "Quantity less than 40% of course price (" . $percent . ") "; return false;}
 
-
-
     }else{echo"There is not realcouse";return false;}
+
+}
+
+function is_enroll($course_id,$user_id){
+    $coursecontext = context_course::instance($course_id);
+    $user = new stdClass();
+    $user->id =$user_id;
+    if(is_enrolled($coursecontext,$user))
+        return true;
+    else 
+        return false;
+}
+
+function add_payment($student_id,$group_id , $Quantity){
+
 
 
 }
