@@ -8,15 +8,18 @@ include_once '../table/groupmoodle.php';
 
 include_once '../table/Courseinfo.php';
 include_once '../config/DBClass.php';
+include_once '../lib/enrollib.php';
 
 require_once(__DIR__.'/../../config.php');
 require_once($CFG->dirroot.'/course/lib.php');
 require_once($CFG->dirroot.'/group/lib.php');
 require_once($CFG->dirroot.'/course/externallib.php');
-
+//echo date('d-m-Y');
+first_payment(1,10,60);
 //defined('MOODLE_INTERNAL') || die();
 //global $DB;
-$group = new stdClass();
+
+/*$group = new stdClass();
     $group->courseid =8;
     $group->idnumber ="";
     $group->name ='compilar ';
@@ -25,7 +28,8 @@ $group = new stdClass();
     $group->enrolmentkey ='';
     $group->picture ='';
     $group->hidepicture ='';
- echo groups_create_group($group );
+ echo groups_create_group($group );*/
+
 //$increment = $DB->get_record_sql("SELECT `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'moodle' AND   TABLE_NAME   = 'mdl_course';");
 //$external   =new core_course_external();
  /*  

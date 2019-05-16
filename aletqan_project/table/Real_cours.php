@@ -73,6 +73,20 @@ class Real_cours{
 
         return $stmt;
     }
+
+
+    public function select_group($id_group){
+        $query = "SELECT realcours_id , cours_id ,group_id ,Teacher_id , start_date ,end_date,price,attendance_days  FROM " . $this->table_name . " where group_id = " . $id_group;
+        $stmt = $this->connection->prepare($query);
+
+        $stmt->execute();
+
+        return $stmt;
+
+    }
+
+
+
     //U
     public function update(){}
     //D
