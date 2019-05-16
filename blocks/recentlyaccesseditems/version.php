@@ -22,6 +22,10 @@
  */
 defined('MOODLE_INTERNAL') || die();
 
+<<<<<<< HEAD
 $plugin->version   = 2019022600;            // The current plugin version (Date: YYYYMMDDXX).
+=======
+$plugin->version   = 2018120301;            // The current plugin version (Date: YYYYMMDDXX).
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
 $plugin->requires  = 2018112800;            // Requires this Moodle version.
 $plugin->component = 'block_recentlyaccesseditems'; // Full name of the plugin (used for diagnostics).

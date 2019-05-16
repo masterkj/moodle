@@ -1893,10 +1893,14 @@ class core_message_privacy_provider_testcase extends \core_privacy\tests\provide
         // There should be still 2 blocked users.
         $this->assertEquals(2, $DB->count_records('message_users_blocked'));
 
+<<<<<<< HEAD
         // There should be 1 muted conversation.
         $this->assertEquals(1, $DB->count_records('message_conversation_actions'));
 
         // There should be 3 notifications.
+=======
+        // There should be 5 notifications.
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
         $this->assertEquals(5, $DB->count_records('notifications'));
 
         // There should be 5 messages - 3 individual - 2 group (course2).
@@ -2410,10 +2414,14 @@ class core_message_privacy_provider_testcase extends \core_privacy\tests\provide
         // There should be still 2 blocked users.
         $this->assertEquals(2, $DB->count_records('message_users_blocked'));
 
+<<<<<<< HEAD
         // There should be 2 muted conversation.
         $this->assertEquals(2, $DB->count_records('message_conversation_actions'));
 
         // There should be 3 notifications.
+=======
+        // There should be 5 notifications.
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
         $this->assertEquals(5, $DB->count_records('notifications'));
 
         // There should be 4 messages - 3 private + 1 group sent by user2.

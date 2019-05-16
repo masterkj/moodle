@@ -549,8 +549,13 @@ class api {
         $typesql = !is_null($type) ? " AND mc.type = :convtype " : "";
 
         $sql = "SELECT m.id as messageid, mc.id as id, mc.name as conversationname, mc.type as conversationtype, m.useridfrom,
+<<<<<<< HEAD
                        m.smallmessage, m.fullmessage, m.fullmessageformat, m.fullmessagetrust, m.fullmessagehtml, m.timecreated,
                        mc.component, mc.itemtype, mc.itemid, mc.contextid, mca.action as ismuted
+=======
+                       m.smallmessage, m.fullmessage, m.fullmessageformat, m.fullmessagehtml, m.timecreated, mc.component,
+                       mc.itemtype, mc.itemid, mc.contextid
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
                   FROM {message_conversations} mc
             INNER JOIN {message_conversation_members} mcm
                     ON (mcm.conversationid = mc.id AND mcm.userid = :userid3)

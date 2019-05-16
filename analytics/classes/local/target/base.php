@@ -210,10 +210,53 @@ abstract class base extends \core_analytics\calculable {
      * @param  \core_analytics\prediction[] $predictions
      * @return void
      */
+<<<<<<< HEAD
     public function generate_insight_notifications($modelid, $samplecontexts, array $predictions = []) {
         // Delegate the processing of insights to the insights_generator.
         $insightsgenerator = new \core_analytics\insights_generator($modelid, $this);
         $insightsgenerator->generate($samplecontexts, $predictions);
+=======
+    public function generate_insight_notifications($modelid, $samplecontexts) {
+
+        foreach ($samplecontexts as $context) {
+
+            $insightinfo = new \stdClass();
+            $insightinfo->insightname = $this->get_name();
+            $insightinfo->contextname = $context->get_context_name();
+            $subject = get_string('insightmessagesubject', 'analytics', $insightinfo);
+
+            $users = $this->get_insights_users($context);
+
+            if (!$coursecontext = $context->get_course_context(false)) {
+                $coursecontext = \context_course::instance(SITEID);
+            }
+
+            foreach ($users as $user) {
+
+                $message = new \core\message\message();
+                $message->component = 'moodle';
+                $message->name = 'insights';
+
+                $message->userfrom = \core_user::get_noreply_user();
+                $message->userto = $user;
+
+                $insighturl = new \moodle_url('/report/insights/insights.php?modelid=' . $modelid . '&contextid=' . $context->id);
+                $message->subject = $subject;
+                // Same than the subject.
+                $message->contexturlname = $message->subject;
+                $message->courseid = $coursecontext->instanceid;
+
+                $message->fullmessage = get_string('insightinfomessage', 'analytics', $insighturl->out(false));
+                $message->fullmessageformat = FORMAT_PLAIN;
+                $message->fullmessagehtml = get_string('insightinfomessagehtml', 'analytics', $insighturl->out());
+                $message->smallmessage = get_string('insightinfomessage', 'analytics', $insighturl->out(false));
+                $message->contexturl = $insighturl->out(false);
+
+                message_send($message);
+            }
+        }
+
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
     }
 
     /**

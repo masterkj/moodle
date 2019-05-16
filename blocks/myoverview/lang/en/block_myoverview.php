@@ -48,7 +48,11 @@ $string['aria:sortingdropdown'] = 'Sorting drop-down menu';
 $string['card'] = 'Card';
 $string['cards'] = 'Cards';
 $string['courseprogress'] = 'Course progress:';
+<<<<<<< HEAD
 $string['completepercent'] = '{$a}% complete';
+=======
+$string['complete'] = 'complete';
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
 $string['favourites'] = 'Starred';
 $string['future'] = 'Future';
 $string['inprogress'] = 'In progress';

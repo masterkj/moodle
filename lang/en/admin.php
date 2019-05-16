@@ -777,7 +777,10 @@ $string['messagingcategory'] = 'Messaging';
 $string['messagingdefaultpressenter'] = 'Use enter to send enabled by default';
 $string['messagingdeletereadnotificationsdelay'] = 'Delete read notifications';
 $string['messagingdeleteallnotificationsdelay'] = 'Delete all notifications';
+<<<<<<< HEAD
 $string['messagingssettings'] = 'Messaging settings';
+=======
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
 $string['minpassworddigits'] = 'Digits';
 $string['minpasswordlength'] = 'Password length';
 $string['minpasswordlower'] = 'Lowercase letters';

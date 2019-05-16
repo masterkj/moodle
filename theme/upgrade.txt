@@ -1,6 +1,7 @@
 This files describes API changes in /theme/* themes,
 information provided here is intended especially for theme designer.
 
+<<<<<<< HEAD
 === 3.7 ===
 * The core/form_autocompelte_input template now has a `data-tags` attribute.
 * Boost theme renderer overrides have now been migrated to core.
@@ -8,6 +9,10 @@ information provided here is intended especially for theme designer.
 * Core templates in Boost have now moved into core
 * Templates that were overridden by boost are now located in Bootstrapbase
 * Themes bootstrapbase, clean & more have now been removed.
+=======
+=== 3.6.3 ===
+* The core/form_autocomplete_input template now has a `data-tags` attribute.
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
 
 === 3.6 ===
 

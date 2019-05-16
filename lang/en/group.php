@@ -140,7 +140,11 @@ $string['importgroups_help'] = 'Groups may be imported via text file. The format
 * Each record is a series of data separated by commas
 * The first record contains a list of fieldnames defining the format of the rest of the file
 * Required fieldname is groupname
+<<<<<<< HEAD
 * Optional fieldnames are groupidnumber, description, enrolmentkey, groupingname, enablemessaging';
+=======
+* Optional fieldnames are groupidnumber, description, enrolmentkey, groupingname';
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
 $string['importgroups_link'] = 'group/import';
 $string['includeonlyactiveenrol'] = 'Include only active enrolments';
 $string['includeonlyactiveenrol_help'] = 'If enabled, suspended users will not be included in groups.';

@@ -1,6 +1,7 @@
 This files describes API changes in core libraries and APIs,
 information provided here is intended especially for developers.
 
+<<<<<<< HEAD
 === 3.7 ===
 
 * Nodes in the navigation api can have labels for each group. See set/get_collectionlabel().
@@ -11,10 +12,21 @@ attribute on forms to avoid collisions in forms loaded in AJAX requests.
   to be updated or queued as required. This new functionality can be found in \core\task\manager::reschedule_or_queue_adhoc_task.
 * Icons are displayed for screen readers unless they have empty alt text (aria-hidden). Do not provide an icon with alt text immediately beside an element with exactly the same text.
 * admin_settingpage has a new function hide_if(), modeled after the same functionality in the forms library. This allows admin settings to be dynamically hidden based on the values of other settings.
+=======
+=== 3.6.4 ===
+
+* Behat timeout constants behat_base::TIMEOUT, EXTENDED_TIMEOUT, and REDUCED_TIMEOUT will be
+  deprecated in 3.7. Please instead use the functions behat_base::get_timeout(), get_extended_timeout(),
+  and get_reduced_timeout(). These allow for timeouts to be increased by a setting in config.php.
+
+=== 3.6.3 ===
+
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
 * The \core_rating provider's get_sql_join function now accepts an optional $innerjoin parameter.
   It is recommended that privacy providers using this function call rewrite any long query into a number of separate
   calls to add_from_sql for improved performance, and that the new argument is used.
   This will allow queries to remain backwards-compatible with older versions of Moodle but will have significantly better performance in version supporting the innerjoin parameter.
+<<<<<<< HEAD
 * /message/defaultoutputs.php file and admin_page_defaultmessageoutputs class have been deprecated
   and all their settings moved to admin/message.php (see MDL-64495). Please use admin_page_managemessageoutputs class instead.
 * A new parameter $lang has been added to mustache_template_source_loader->load_with_dependencies() method
@@ -30,6 +42,13 @@ attribute on forms to avoid collisions in forms loaded in AJAX requests.
   in this category. To work with list of courses use API methods in core_course_category and also 'course' form element.
 * It is possible to pass additional conditions to get_courses_search();
   core_course_category::search_courses() now allows to search only among courses with completion enabled.
+=======
+
+=== 3.6.2 ===
+
+* The method core_user::is_real_user() now returns false for userid = 0 parameter
+* Icons are displayed for screen readers unless they have empty alt text (aria-hidden). Do not provide an icon with alt text immediately beside an element with exactly the same text.
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
 
 === 3.6 ===
 

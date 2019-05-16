@@ -29,6 +29,7 @@
     {
     }
 }}
+<<<<<<< HEAD:mod/forum/templates/frontpage_social_discussion_list.mustache
 {{< mod_forum/social_discussion_list }}
     {{$discussion_create_text}}
         {{#str}}addanewtopic, forum{{/str}}
@@ -40,3 +41,10 @@
         {{/hasmore}}
     {{/discussion_bottom_pagination}}
 {{/ mod_forum/social_discussion_list }}
+=======
+<div class="m-t-2" data-region="random-question-preview-container" style="position:relative">
+    <div data-region="question-count-container"></div>
+    <div data-region="question-list-container"></div>
+    {{> core/overlay_loading}}
+</div>
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503:theme/bootstrapbase/templates/mod_quiz/random_question_form_preview.mustache

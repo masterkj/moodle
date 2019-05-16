@@ -79,6 +79,10 @@ $string['guestnoeditmessage'] = 'Guest user can not edit messaging options';
 $string['guestnoeditmessageother'] = 'Guest user can not edit other user messaging options';
 $string['groupinfo'] = 'Group info';
 $string['groupconversations'] = 'Group';
+<<<<<<< HEAD
+=======
+$string['groupmessages'] = 'Group';
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
 $string['hidemessagewindow'] = 'Hide message window';
 $string['hidenotificationwindow'] = 'Hide notification window';
 $string['individualconversations'] = 'Private';
@@ -118,6 +122,11 @@ $string['nocontactrequests'] = 'No contact requests';
 $string['nocontacts'] = 'No contacts';
 $string['nocontactsgetstarted'] = 'No contacts';
 $string['nogroupconversations'] = 'No group conversations';
+<<<<<<< HEAD
+=======
+$string['nogroupmessages'] = 'No group conversations';
+$string['nomessages'] = 'No messages';
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
 $string['noindividualconversations'] = 'No private conversations';
 $string['nomessagesfound'] = 'No messages were found';
 $string['noreply'] = 'Do not reply to this message';
@@ -238,7 +247,10 @@ $string['unblockcontact'] = 'Unblock contact';
 $string['unblockuser'] = 'Unblock user';
 $string['unblockuserconfirm'] = 'Are you sure you want to unblock {$a}?';
 $string['unknownuser'] = 'Unknown user';
+<<<<<<< HEAD
 $string['unmuteconversation'] = 'Unmute';
+=======
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
 $string['unreadconversations'] = 'There are {$a} unread conversations';
 $string['unreadmessages'] = 'There are {$a} unread messages';
 $string['unreadnotification'] = 'Unread notification: {$a}';

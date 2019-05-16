@@ -55,11 +55,27 @@ class behat_admin extends behat_base {
 
         foreach ($data as $label => $value) {
 
+<<<<<<< HEAD
             $this->execute('behat_navigation::i_select_from_flat_navigation_drawer', [get_string('administrationsite')]);
 
             // Search by label.
             $this->execute('behat_forms::i_set_the_field_to', [get_string('query', 'admin'), $label]);
             $this->execute("behat_forms::press_button", get_string('search', 'admin'));
+=======
+            // We expect admin block to be visible, otherwise go to homepage.
+            if (!$this->getSession()->getPage()->find('css', '.block_settings')) {
+                $this->getSession()->visit($this->locate_path('/'));
+                $this->wait(self::get_timeout() * 1000, self::PAGE_READY_JS);
+            }
+
+            // Search by label.
+            $searchbox = $this->find_field(get_string('searchinsettings', 'admin'));
+            $searchbox->setValue($label);
+            $submitsearch = $this->find('css', 'form.adminsearchform input[type=submit]');
+            $submitsearch->press();
+
+            $this->wait(self::get_timeout() * 1000, self::PAGE_READY_JS);
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
 
             // Admin settings does not use the same DOM structure than other moodle forms
             // but we also need to use lib/behat/form_field/* to deal with the different moodle form elements.

@@ -796,8 +796,12 @@ if ($mformpost->is_cancelled()) {
     // Clean message text.
     $fromform = trusttext_pre_edit($fromform, 'message', $modcontext);
 
+<<<<<<< HEAD
     if ($fromform->edit) {
         // Updating a post.
+=======
+    if ($fromform->edit) {           // Updating a post.
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
         unset($fromform->groupid);
         $fromform->id = $fromform->edit;
         $message = '';

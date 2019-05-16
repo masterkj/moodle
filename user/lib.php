@@ -1617,4 +1617,7 @@ function user_edit_map_field_purpose($userid, $fieldname) {
 
     return $purpose;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503

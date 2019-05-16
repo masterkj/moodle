@@ -744,7 +744,11 @@ class theme_config {
         $configurable = array(
             'parents', 'sheets', 'parents_exclude_sheets', 'plugins_exclude_sheets', 'usefallback',
             'javascripts', 'javascripts_footer', 'parents_exclude_javascripts',
+<<<<<<< HEAD
             'layouts', 'enablecourseajax', 'requiredblocks',
+=======
+            'layouts', 'enable_dock', 'enablecourseajax', 'requiredblocks',
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
             'rendererfactory', 'csspostprocess', 'editor_sheets', 'editor_scss', 'rarrow', 'larrow', 'uarrow', 'darrow',
             'hidefromselector', 'doctype', 'yuicssmodules', 'blockrtlmanipulations',
             'lessfile', 'extralesscallback', 'lessvariablescallback', 'blockrendermethod',

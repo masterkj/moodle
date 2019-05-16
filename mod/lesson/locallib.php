@@ -4274,6 +4274,7 @@ abstract class lesson_page extends lesson_base {
      * @param int $answerformat
      * @return string Returns formatted string
      */
+<<<<<<< HEAD
     public function format_answer($answer, $context, $answerformat, $options = []) {
 
         if (is_object($options)) {
@@ -4288,6 +4289,16 @@ abstract class lesson_page extends lesson_base {
             $options['para'] = true;
         }
 
+=======
+    private function format_answer($answer, $context, $answerformat, $options = []) {
+
+        if (empty($options)) {
+            $options = [
+                'context' => $context,
+                'para' => true
+            ];
+        }
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
         return format_text($answer, $answerformat, $options);
     }
 

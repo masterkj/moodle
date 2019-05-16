@@ -265,6 +265,7 @@ EOD;
             $submission = $assignment->get_user_submission($userid, false, $attemptnumber);
         }
 
+
         $contextid = $assignment->get_context()->id;
         $component = 'assignfeedback_editpdf';
         $filearea = self::COMBINED_PDF_FILEAREA;

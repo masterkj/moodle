@@ -79,6 +79,15 @@ $string['taskscheduleminute_help'] = 'Minute field for task schedule. The field 
 * <strong>2,6,9</strong> 2, 6 and 9 minutes past the hour';
 $string['taskschedulemonth'] = 'Month';
 $string['taskschedulemonth_help'] = 'Month field for task schedule. The field uses the same format as unix cron. Some examples are:
+<<<<<<< HEAD
+=======
+
+* <strong>*</strong> Every month
+* <strong>*/2</strong> Every second month
+* <strong>1</strong> Every January
+* <strong>1,5</strong> Every January and May';
+$string['privacy:metadata'] = 'The Scheduled task configuration plugin does not store any personal data.';
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
 
 * <strong>*</strong> Every month
 * <strong>*/2</strong> Every second month

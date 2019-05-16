@@ -113,6 +113,7 @@ class mod_forum_mail_testcase extends advanced_testcase {
         // Post a discussion to the forum.
         list($discussion, $post) = $this->helper_post_to_forum($forum, $author);
 
+<<<<<<< HEAD
         $expect = [
             'author' => (object) [
                 'userid' => $author->id,
@@ -129,6 +130,27 @@ class mod_forum_mail_testcase extends advanced_testcase {
         $this->eventsink = $this->redirectEvents();
         $this->send_notifications_and_assert($author, [$post]);
         $events = $this->eventsink->get_events();
+=======
+        // Run cron and check that \core\event\message_sent contains the course id.
+        // Close the message sink so that message_send is run.
+        $this->helper->messagesink->close();
+
+        // Catch just the cron events. For each message sent two events are fired:
+        // core\event\message_sent
+        // core\event\message_viewed.
+        $this->helper->eventsink = $this->redirectEvents();
+        $this->expectOutputRegex('/Processing user/');
+
+        forum_cron();
+
+        // Get the events and close the sink so that remaining events can be triggered.
+        $events = $this->helper->eventsink->get_events();
+        $this->helper->eventsink->close();
+
+        // Reset the message sink for other tests.
+        $this->helper->messagesink = $this->redirectMessages();
+        // Notification has been marked as read, so now first event should be a 'notification_viewed' one.
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
         $event = reset($events);
 
         $this->assertEquals($course->id, $event->other['courseid']);

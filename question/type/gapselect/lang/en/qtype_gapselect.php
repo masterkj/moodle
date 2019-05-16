@@ -25,7 +25,11 @@
 $string['addmorechoiceblanks'] = 'Blanks for {no} more choices';
 $string['answer'] = 'Answer';
 $string['choices'] = 'Choices';
+<<<<<<< HEAD
 $string['choicex'] = 'Choice [[{no}]]';
+=======
+$string['choicex'] = 'Choice {no}';
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
 $string['combinedcontrolnamegapselect'] = 'drop-down menu';
 $string['combinedcontrolnamegapselectplural'] = 'drop-down menus';
 $string['correctansweris'] = 'The correct answer is: {$a}';

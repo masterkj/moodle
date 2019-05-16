@@ -454,7 +454,11 @@ EOF;
         $this->assertNotContains('aria-hidden="true"', $renderer->pix_icon('t/print', 'Print'), $reason);
 
         // Test another theme with a different icon system.
+<<<<<<< HEAD
         set_config('theme', 'classic');
+=======
+        set_config('theme', 'clean');
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
         // Need to reset after changing theme.
         $page->reset_theme_and_output();
         $renderer = $page->get_renderer('core');

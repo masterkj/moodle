@@ -1799,9 +1799,15 @@ function mod_workshop_core_calendar_provide_event_action(calendar_event $event,
     if (!$userid) {
         $userid = $USER->id;
     }
+<<<<<<< HEAD
 
     $cm = get_fast_modinfo($event->courseid, $userid)->instances['workshop'][$event->instance];
 
+=======
+
+    $cm = get_fast_modinfo($event->courseid, $userid)->instances['workshop'][$event->instance];
+
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
     if (!$cm->uservisible) {
         // The module is not visible to the user for any reason.
         return null;

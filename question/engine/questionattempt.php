@@ -364,10 +364,19 @@ class question_attempt {
      * outer div of the question. It can be used to uniquely reference
      * the question from JavaScript.
      *
+<<<<<<< HEAD
      * @return string id added to the outer <div class="que ..."> when the question is rendered.
      */
     public function get_outer_question_div_unique_id() {
         return 'question-' . $this->usageid . '-' . $this->slot;
+=======
+     * Note, this is not truly unique. It will be changed in Moodle 3.7. See MDL-65029.
+     *
+     * @return string id added to the outer <div class="que ..."> when the question is rendered.
+     */
+    public function get_outer_question_div_unique_id() {
+        return 'q' . $this->slot;
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
     }
 
     /**

@@ -2442,6 +2442,7 @@ function xmldb_main_upgrade($oldversion) {
         upgrade_main_savepoint(true, 2018120301.02);
     }
 
+<<<<<<< HEAD
     if ($oldversion < 2019011500.00) {
         // Define table task_log to be created.
         $table = new xmldb_table('task_log');
@@ -2583,6 +2584,9 @@ function xmldb_main_upgrade($oldversion) {
     }
 
     if ($oldversion < 2019011801.01) {
+=======
+    if ($oldversion <  2018120302.02) {
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
 
         // Delete all files that have been used in sections, which are already deleted.
         $sql = "SELECT DISTINCT f.itemid as sectionid, f.contextid
@@ -2603,10 +2607,17 @@ function xmldb_main_upgrade($oldversion) {
         }
         $stalefiles->close();
 
+<<<<<<< HEAD
         upgrade_main_savepoint(true, 2019011801.01);
     }
 
     if ($oldversion < 2019011801.02) {
+=======
+        upgrade_main_savepoint(true,  2018120302.02);
+    }
+
+    if ($oldversion < 2018120302.03) {
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
         // Add index 'useridfrom' to the table 'notifications'.
         $table = new xmldb_table('notifications');
         $index = new xmldb_index('useridfrom', XMLDB_INDEX_NOTUNIQUE, ['useridfrom']);
@@ -2615,10 +2626,17 @@ function xmldb_main_upgrade($oldversion) {
             $dbman->add_index($table, $index);
         }
 
+<<<<<<< HEAD
         upgrade_main_savepoint(true, 2019011801.02);
     }
 
     if ($oldversion < 2019011801.03) {
+=======
+        upgrade_main_savepoint(true, 2018120302.03);
+    }
+
+    if ($oldversion < 2018120302.04) {
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
         // Remove duplicate entries from group memberships.
         // Find records with multiple userid/groupid combinations and find the highest ID.
         // Later we will remove all those entries.
@@ -2640,6 +2658,7 @@ function xmldb_main_upgrade($oldversion) {
         $key = new xmldb_key('useridgroupid', XMLDB_KEY_UNIQUE, array('userid', 'groupid'));
         // Launch add key useridgroupid.
         $dbman->add_key($table, $key);
+<<<<<<< HEAD
         // Main savepoint reached.
         upgrade_main_savepoint(true, 2019011801.03);
     }
@@ -2732,6 +2751,14 @@ function xmldb_main_upgrade($oldversion) {
     }
 
     if ($oldversion < 2019030800.02) {
+=======
+
+        // Main savepoint reached.
+        upgrade_main_savepoint(true, 2018120302.04);
+    }
+
+    if ($oldversion < 2018120303.01) {
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
         // Remove any conversations and their members associated with non-existent groups.
         $sql = "SELECT mc.id
                   FROM {message_conversations} mc
@@ -2747,7 +2774,10 @@ function xmldb_main_upgrade($oldversion) {
 
             $DB->delete_records_list('message_conversations', 'id', $conversationids);
             $DB->delete_records_list('message_conversation_members', 'conversationid', $conversationids);
+<<<<<<< HEAD
             $DB->delete_records_list('message_conversation_actions', 'conversationid', $conversationids);
+=======
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
 
             // Now, go through each conversation and delete any messages and related message actions.
             foreach ($conversationids as $conversationid) {
@@ -2765,10 +2795,17 @@ function xmldb_main_upgrade($oldversion) {
         }
 
         // Main savepoint reached.
+<<<<<<< HEAD
         upgrade_main_savepoint(true, 2019030800.02);
     }
 
     if ($oldversion < 2019030800.03) {
+=======
+        upgrade_main_savepoint(true, 2018120303.01);
+    }
+
+    if ($oldversion < 2018120303.02) {
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
 
         // Add missing indicators to course_dropout.
         $params = [
@@ -2827,6 +2864,7 @@ function xmldb_main_upgrade($oldversion) {
         }
 
         // Main savepoint reached.
+<<<<<<< HEAD
         upgrade_main_savepoint(true, 2019030800.03);
     }
 
@@ -2986,6 +3024,15 @@ function xmldb_main_upgrade($oldversion) {
 
         // Main savepoint reached.
         upgrade_main_savepoint(true, 2019041000.02);
+=======
+        upgrade_main_savepoint(true, 2018120303.02);
+    }
+
+    if ($oldversion < 2018120303.05) {
+        // The no_teaching model might have been marked as not-trained by mistake (static models are always trained).
+        $DB->set_field('analytics_models', 'trained', 1, ['target' => '\core\analytics\target\no_teaching']);
+        upgrade_main_savepoint(true, 2018120303.05);
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
     }
 
     return true;

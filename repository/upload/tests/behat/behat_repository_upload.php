@@ -170,6 +170,7 @@ class behat_repository_upload extends behat_base {
 
             // We wait for all the JS to finish.
             $this->getSession()->wait(self::get_timeout(), self::PAGE_READY_JS);
+<<<<<<< HEAD
         }
 
     }
@@ -202,6 +203,8 @@ class behat_repository_upload extends behat_base {
                     "//ancestor::div[contains(concat(' ', normalize-space(@class), ' '), ' felement ')]",
                     $exception
             );
+=======
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
         }
 
         return $filepickercontainer;

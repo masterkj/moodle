@@ -139,7 +139,12 @@ echo '
         </div>
     </fieldset>
     <div class="fitem" style="text-align: center;">
+<<<<<<< HEAD
         <input id="id_addidnumbers" type="submit" class="btn btn-secondary" value="' . get_string('addidnumbers', 'grades') . '" name="addidnumbers" />
+=======
+        <input id="id_addidnumbers" type="submit" class="btn btn-secondary" value="' . get_string('addidnumbers', 'grades') . '"
+                name="addidnumbers" />
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
     </div>
 </form>';
 

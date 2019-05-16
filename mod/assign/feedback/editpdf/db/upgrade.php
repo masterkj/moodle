@@ -95,6 +95,7 @@ function xmldb_assignfeedback_editpdf_upgrade($oldversion) {
     // Automatically generated Moodle v3.6.0 release upgrade line.
     // Put any upgrade step following this.
 
+<<<<<<< HEAD
     if ($oldversion < 2019010800) {
         // Define table assignfeedback_editpdf_rot to be created.
         $table = new xmldb_table('assignfeedback_editpdf_rot');
@@ -123,5 +124,7 @@ function xmldb_assignfeedback_editpdf_upgrade($oldversion) {
         upgrade_plugin_savepoint(true, 2019010800, 'assignfeedback', 'editpdf');
     }
 
+=======
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
     return true;
 }

@@ -2479,6 +2479,7 @@ $capabilities = array(
             'user' => CAP_ALLOW,
         ],
     ],
+<<<<<<< HEAD
 
     'moodle/analytics:listowninsights' => array(
         'captype' => 'read',
@@ -2487,4 +2488,6 @@ $capabilities = array(
             'user' => CAP_ALLOW
         )
     ),
+=======
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
 );

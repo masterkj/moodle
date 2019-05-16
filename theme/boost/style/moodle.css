@@ -8520,7 +8520,11 @@ a.dimmed_text:visited,
 /* stylelint-disable function-url-scheme-blacklist */
 /* stylelint-enable function-url-scheme-blacklist */
 .tag, .statusok, .statuswarning, .statusserious,
+<<<<<<< HEAD
 .statuscritical, .que .correctness, .label {
+=======
+.statuscritical, .que .correctness, .label, .badge {
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
   display: inline-block;
   padding: 0.25rem 0.4em;
   font-size: 75%;
@@ -11167,10 +11171,13 @@ div.editor_atto_toolbar button .icon {
   #page-admin-search .container {
     overflow-wrap: break-word; } }
 
+<<<<<<< HEAD
 #page-admin-tasklogs .task-class {
   font-size: 0.8203125rem;
   color: #868e96; }
 
+=======
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
 .blockmovetarget .accesshide {
   position: relative;
   left: initial; }
@@ -13671,9 +13678,15 @@ a.ygtvspacer:hover {
   .message-app .footer-container {
     flex-shrink: 0;
     overflow-x: hidden; }
+<<<<<<< HEAD
     .message-app .footer-container textarea {
       direction: ltr; }
   .message-app .matchtext {
+=======
+    .message-drawer .footer-container textarea {
+      direction: ltr; }
+  .message-drawer .matchtext {
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
     background-color: #b5d9f9;
     color: #373a3c;
     height: 1.5rem; }

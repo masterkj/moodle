@@ -117,6 +117,32 @@
                     <div class="alert alert-danger" role="alert" data-aria-autofocus="true">{{error}}</div>
                 </div>
             {{/error}}
+<<<<<<< HEAD
+=======
+            <form action="{{loginurl}}" method="post" id="login">
+                <div class="loginform">
+                    <div class="form-label">
+                        <label for="username">
+                            {{^canloginbyemail}}
+                                {{#str}} username {{/str}}
+                            {{/canloginbyemail}}
+                            {{#canloginbyemail}}
+                                {{#str}} usernameemail {{/str}}
+                            {{/canloginbyemail}}
+                        </label>
+                    </div>
+                    <div class="form-input">
+                        <input type="text" name="username" id="username" size="15" value="{{username}}" autocomplete="username">
+                    </div>
+                    <div class="clearer"><!-- --></div>
+                    <div class="form-label">
+                        <label for="password">{{#str}} password {{/str}}</label>
+                    </div>
+                    <div class="form-input">
+                        <input type="password" name="password" id="password" size="15" value="" autocomplete="current-password">
+                    </div>
+                </div>
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
 
             <div class="row justify-content-md-center">
                 <div class="col-md-5">

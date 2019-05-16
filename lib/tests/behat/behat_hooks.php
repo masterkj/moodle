@@ -381,6 +381,7 @@ class behat_hooks extends behat_base {
 
         // Run all test with medium (1024x768) screen size, to avoid responsive problems.
         $this->resize_window('medium');
+<<<<<<< HEAD
 
         // Set up the tags for current scenario.
         self::fetch_tags_for_scenario($scope);
@@ -389,6 +390,8 @@ class behat_hooks extends behat_base {
         if ($this->has_tag('app')) {
             $this->execute('behat_app::start_scenario');
         }
+=======
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
     }
 
     /**
@@ -413,6 +416,7 @@ class behat_hooks extends behat_base {
             // order to perform the necessary searches.
             $session = $this->getSession();
             $session->visit($this->locate_path('/'));
+<<<<<<< HEAD
 
             // Checking that the root path is a Moodle test site.
             if (self::is_first_scenario()) {
@@ -450,6 +454,24 @@ class behat_hooks extends behat_base {
      */
     public static function get_tags_for_scenario() : array {
         return self::$scenariotags;
+=======
+
+            // Checking that the root path is a Moodle test site.
+            if (self::is_first_scenario()) {
+                $message = "The base URL ({$CFG->wwwroot}) is not a behat test site. " .
+                    'Ensure that you started the built-in web server in the correct directory, ' .
+                    'or that your web server is correctly set up and started.';
+
+                $this->find(
+                        "xpath", "//head/child::title[normalize-space(.)='" . behat_util::BEHATSITENAME . "']",
+                        new ExpectationException($message, $session)
+                    );
+
+                self::$initprocessesfinished = true;
+            }
+            $this->scenariorunning = true;
+        }
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
     }
 
     /**

@@ -5,9 +5,15 @@
     "type": "project",
     "homepage": "https://moodle.org",
     "require-dev": {
+<<<<<<< HEAD
         "phpunit/phpunit": "7.5.*",
         "phpunit/dbunit": "4.0.*",
         "moodlehq/behat-extension": "3.37.0",
+=======
+        "phpunit/phpunit": "6.5.*",
+        "phpunit/dbunit": "3.0.*",
+        "moodlehq/behat-extension": "3.36.0",
+>>>>>>> 95a72cc27cc1a2956408887c1e59fcd9fe4d7503
         "mikey179/vfsstream": "^1.6"
     }
 }
