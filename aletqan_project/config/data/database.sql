@@ -13,9 +13,8 @@ CREATE TABLE `Courseinfo` (
 
 
 CREATE TABLE `Real_cours` (
-  `realcours_id` int(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+  `realcours_id` int(11) UNSIGNED  PRIMARY KEY, 
   `cours_id` int(11) UNSIGNED,
-  `group_id` int(11),
   `Teacher_id` int(11),
   `start_date` date,
   `end_date` date,

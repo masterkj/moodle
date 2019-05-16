@@ -53,6 +53,7 @@ if(
     {
                 
         $real_course = new Real_cours($connection);
+        $real_course->realcours_id=$id_group;
         $real_course->cours_id=$_POST['cours_id'];
         $real_course->group_id=$id_group;
         $real_course->Teacher_id=$_POST['Teacher_id'];
