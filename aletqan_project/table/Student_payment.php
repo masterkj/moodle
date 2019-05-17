@@ -45,12 +45,10 @@ class Student_payment{
 
         // execute query
         if($stmt->execute()){
-        return true;
+           return true;
         }
 
         return false;
-
-
     }
     //R
     public function read(){
@@ -62,7 +60,17 @@ class Student_payment{
 
         return $stmt;
     }
-    //U
+
+    public function sum_payment_student_in_group($realcours_id,$user_id){
+        $query = "SELECT sum(amount) FROM `student_payment` GROUP BY student_id , realcours_id HAVING  student_id = " . " $user_id " . " and realcours_id = " . $realcours_id;
+
+        $stmt = $this->connection->prepare($query);
+
+        $stmt->execute();
+
+        return $stmt;
+    }
+
     public function update(){}
     //D
     public function delete(){}
