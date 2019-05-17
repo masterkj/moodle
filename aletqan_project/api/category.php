@@ -11,5 +11,5 @@ $dbclass = new DBClass();
 $connection = $dbclass->getConnection();
 $external   =new core_course_external();
 $create_category=$external->create_categories($categories);
-$courses_opject=json_decode ( json_encode($create_category) );
+//$courses_opject=json_decode ( json_encode($create_category) );
 
