@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <XMLDB PATH="enrol/mnet/db" VERSION="20190516" COMMENT="XMLDB file for Moodle enrol/mnet">
+    <TABLES>
+      <TABLE NAME="enrol_mnet" COMMENT="Default comment for enrol_mnet, please edit me">
+        <FIELDS>
+          <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" />
+        </FIELDS>
+        <KEYS>
+          <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+        </KEYS>
+      </TABLE>
+    </TABLES>
+  </XMLDB>
