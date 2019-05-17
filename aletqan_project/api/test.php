@@ -10,11 +10,23 @@ include_once '../table/Student_payment.php';
 include_once '../table/Courseinfo.php';
 include_once '../config/DBClass.php';
 include_once '../lib/enrollib.php';
-require_once(__DIR__.'/../../config.php');
-require_once($CFG->dirroot.'/course/lib.php');
-require_once($CFG->dirroot.'/group/lib.php');
-require_once($CFG->dirroot.'/course/externallib.php');
-require_once($CFG->dirroot.'/lib/enrollib.php');
+require_once(__DIR__ . '/../../config.php');
+require_once($CFG->dirroot . '/course/lib.php');
+require_once($CFG->dirroot . '/group/lib.php');
+require_once($CFG->dirroot . '/course/externallib.php');
+require_once($CFG->dirroot . '/lib/enrollib.php');
+
+$result = user_in_moodle(3);
+if ($result)
+  echo ture;
+else
+  echo false;
+
+
+
+
+
+
 //echo date('d-m-Y');
 //first_payment(1,10,60);
 /*$coursecontext = context_course::instance(9);
@@ -24,7 +36,7 @@ if(is_enrolled($coursecontext,$user))
 echo "true";
 else{echo "false";}*/
 //echo json_encode(select_real_course(8)) ;
-add_payment(3,9,23,110);
+// add_payment(3,9,23,110);
 /*$dbclass = new DBClass();
 $connection = $dbclass->getConnection();
 $payment = new Student_payment($connection);
@@ -67,5 +79,3 @@ $stmt= $courseinfo->select_id(6);
 
   echo   json_encode($courseinfo_opject->cours_name);
     echo json_encode($stmt->fetch(PDO::FETCH_ASSOC));*/
-
-
