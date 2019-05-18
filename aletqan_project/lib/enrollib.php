@@ -110,26 +110,32 @@ function add_payment($student_id, $group_id, $course_id, $payment)
                     $student_payment->amount = $payment;
 
                     if ($student_payment->create()) {
-                        echo "payment was created";
+                        http_response_code(200);
+                        echo json_encode(array("message" => "payment was created."));
                         return true;
                     } else {
-                        echo "payment not created";
+                        http_response_code(503);
+                        echo json_encode(array("message" => "payment not created."));
                         return false;
                     }
                 } else {
-                    echo 'Quantity is not acceptable where remaining amount= ' . $Remaining_amount;
+                    http_response_code(405);
+                    echo json_encode(array("message" => 'Quantity is not acceptable where remaining amount= ' . $Remaining_amount));
                     return false;
                 }
             } else {
-                echo 'The quantity is greater than the remaining amount  = ' . $Remaining_amount;
+                http_response_code(405);
+                echo json_encode(array("message" => 'The quantity is greater than the remaining amount  = ' . $Remaining_amount));
                 return false;
             }
         } else {
-            echo 'student not exist in group';
+            http_response_code(404);
+            echo json_encode(array("message" => "student not exist in group."));
             return false;
         }
     } else {
-        echo 'student not enroll';
+        http_response_code(404);
+        echo json_encode(array("message" => "student not enroll."));
         return false;
     }
 }
