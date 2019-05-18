@@ -7,9 +7,12 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 require_once(__DIR__ . '/../../../config.php'); 
 require_once($CFG->dirroot.'/course/externallib.php');
+include_once '../table/groupmoodle.php';
+include_once '../table/Real_cours.php';
+include_once '../config/DBClass.php';
 $dbclass = new DBClass();
 $connection = $dbclass->getConnection();
 $external   =new core_course_external();
 $create_category=$external->create_categories($categories);
-//$courses_opject=json_decode ( json_encode($create_category) );
-
+//$category_opject=json_decode ( json_encode($create_category) );
+//$create_category= json_encode($category_opject );
