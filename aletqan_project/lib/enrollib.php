@@ -1,7 +1,7 @@
 <?php
-require_once(__DIR__ . '/../../config.php');
-require_once($CFG->dirroot . '/lib/grouplib.php'); //groups_is_member//groups_group_exists
-require_once($CFG->dirroot . '/lib/enrollib.php'); //is_enrolled,
+require_once __DIR__ . '/../../config.php';
+require_once $CFG->dirroot . '/lib/grouplib.php'; //groups_is_member//groups_group_exists
+require_once $CFG->dirroot . '/lib/enrollib.php'; //is_enrolled,
 
 include_once '../config/DBClass.php';
 include_once '../table/Student_payment.php';
@@ -14,7 +14,7 @@ function first_payment($student_id, $group_id, $payment)
     $dbclass = new DBClass();
     $connection = $dbclass->getConnection();
     $realcours = new Real_cours($connection);
-    $stmt =    $realcours->select_group($group_id);
+    $stmt = $realcours->select_group($group_id);
     if ($st = $stmt->fetch()) {
         $realcours_object = json_decode(json_encode($st));
         $percent = $realcours_object->price * 40 / 100;
@@ -49,16 +49,24 @@ function first_payment($student_id, $group_id, $payment)
     }
 }
 
-//api if user enrolled in course
+//if user enrolled in course
 function is_enroll($course_id, $user_id)
 {
     $coursecontext = context_course::instance($course_id);
     $user = new stdClass();
     $user->id = $user_id;
-    if (is_enrolled($coursecontext, $user))
+    if (is_enrolled($coursecontext, $user)) {
         return true;
-    else
+    } else {
         return false;
+    }
+
+}
+
+function course_have_group($course_id, $group_id)
+{
+    global $DB;
+    return ($DB->get_record('groups', ['courseid' => $course_id, 'id' => $group_id])) != null;
 }
 
 function user_in_moodle($user_id)
@@ -72,23 +80,25 @@ function first_payment_condition($group_id, $payment)
     $dbclass = new DBClass();
     $connection = $dbclass->getConnection();
     $realcours = new Real_cours($connection);
-    $stmt =    $realcours->select_group($group_id);
+    $stmt = $realcours->select_group($group_id);
     if ($st = $stmt->fetch()) {
         $realcours_object = json_decode(json_encode($st));
         $percent = $realcours_object->price * 40 / 100;
-        if ($payment >= $percent && $payment < $realcours_object->price)
+        if ($payment >= $percent && $payment < $realcours_object->price) {
             return true;
+        }
+
     }
     return false;
 }
 
-//api add payment 
-function  add_payment($student_id, $group_id, $course_id, $payment)
+//api add payment
+function add_payment($student_id, $group_id, $course_id, $payment)
 {
     if (is_enroll($course_id, $student_id)) {
         if (groups_is_member($group_id, $student_id)) {
-            $realcours_object =    select_real_course($group_id);
-            $Remaining_amount =    $realcours_object->price - sum_payment_student_in_group($group_id, $student_id);
+            $realcours_object = select_real_course($group_id);
+            $Remaining_amount = $realcours_object->price - sum_payment_student_in_group($group_id, $student_id);
             if ($payment < $Remaining_amount) {
                 if ($payment > 0) {
                     $dbclass = new DBClass();
@@ -124,14 +134,14 @@ function  add_payment($student_id, $group_id, $course_id, $payment)
     }
 }
 
-//return apject json to realcourse 
+//return apject json to realcourse
 function select_real_course($group_id)
 {
 
     $dbclass = new DBClass();
     $connection = $dbclass->getConnection();
     $realcours = new Real_cours($connection);
-    $stmt =    $realcours->select_group($group_id);
+    $stmt = $realcours->select_group($group_id);
     if ($st = $stmt->fetch(2)) {
         $realcours_object = json_decode(json_encode($st));
         return $realcours_object;
@@ -139,7 +149,7 @@ function select_real_course($group_id)
     return false;
 }
 
-//return int to  sum  payment student in realcourse'group' 
+//return int to  sum  payment student in realcourse'group'
 function sum_payment_student_in_group($group_id, $student_id)
 {
     $dbclass = new DBClass();
