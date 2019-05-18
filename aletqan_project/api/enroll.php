@@ -64,7 +64,6 @@ if (
                 } else {
                     http_response_code(402);
                     echo json_encode(array("message" => "This payment is not accepted  ."));
-                    echo $payment;echo $group_id;
                 }
 
             } else {

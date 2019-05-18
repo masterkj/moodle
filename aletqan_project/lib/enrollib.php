@@ -13,40 +13,19 @@ function first_payment($student_id, $group_id, $payment)
 
     $dbclass = new DBClass();
     $connection = $dbclass->getConnection();
-    $realcours = new Real_cours($connection);
-    $stmt = $realcours->select_group($group_id);
-    if ($st = $stmt->fetch()) {
-        $realcours_object = json_decode(json_encode($st));
-        $percent = $realcours_object->price * 40 / 100;
-        if ($payment >= $percent) {
+    $student_payment = new Student_payment($connection);
+    $student_payment->student_id = $student_id;
+    $student_payment->realcours_id = $group_id;
+    $student_payment->date = date('Y-m-d');
+    $student_payment->amount = $payment;
 
-            if ($payment < $realcours_object->price) {
-
-                $student_payment = new Student_payment($connection);
-                $student_payment->student_id = $student_id;
-                $student_payment->realcours_id = $realcours_object->realcours_id;
-                $student_payment->date = date('Y-m-d');
-                $student_payment->amount = $payment;
-
-                if ($student_payment->create()) {
-                    echo "payment was created";
-                    return true;
-                } else {
-                    echo "payment not created";
-                    return false;
-                }
-            } else {
-                echo "The quantity is larger than the price of the course " . $realcours_object->price;
-                return false;
-            }
-        } else {
-            echo "Quantity less than 40% of course price (" . $percent . ") ";
-            return false;
-        }
+    if ($student_payment->create()) {
+        return true;
     } else {
-        echo "There is not realcouse";
+        echo "payment not created";
         return false;
     }
+
 }
 
 //if user enrolled in course
@@ -77,19 +56,24 @@ function user_in_moodle($user_id)
 
 function first_payment_condition($group_id, $payment)
 {
-    $dbclass = new DBClass();
-    $connection = $dbclass->getConnection();
-    $realcours = new Real_cours($connection);
-    $stmt = $realcours->select_group($group_id);
-    if ($st = $stmt->fetch()) {
-        $realcours_object = json_decode(json_encode($st));
+    if ($realcours_object = select_real_course($group_id)) {
         $percent = $realcours_object->price * 40 / 100;
-        if ($payment >= $percent && $payment < $realcours_object->price) {
-            return true;
-        }
+        if ($payment >= $percent) {
 
+            if ($payment < $realcours_object->price) {
+                return true;
+            } else {
+                echo json_encode(array("message" => "The quantity is larger than the price of the course " . $realcours_object->price));
+                return false;
+            }
+        } else {
+            echo json_encode(array("message" => "Quantity less than 40% of course price (" . $percent . ") "));
+            return false;
+        }
+    } else {
+        echo json_encode(array("message" => "There is not realcouse"));
+        return false;
     }
-    return false;
 }
 
 //api add payment

@@ -17,7 +17,7 @@ require_once $CFG->dirroot . '/course/externallib.php';
 require_once $CFG->dirroot . '/lib/enrollib.php';
 require_once $CFG->dirroot . '/enrol/locallib.php';
 //$add_user_to_group=$locallib-> add_user_to_group($user, $groupid);
-$result =add_payment(23, 10,6,30);
+$result =first_payment_condition(10,350);
 if ($result) {
     echo 'true';
 } else {
