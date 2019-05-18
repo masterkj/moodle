@@ -18,9 +18,9 @@ require_once($CFG->dirroot . '/lib/enrollib.php');
 
 $result = user_in_moodle(3);
 if ($result)
-  echo ture;
+  echo 'true';
 else
-  echo false;
+  echo 'false';
 
 
 
