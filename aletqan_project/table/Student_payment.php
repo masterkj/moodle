@@ -71,6 +71,16 @@ class Student_payment{
         return $stmt;
     }
 
+    public function not_completed_payment_query($realcours_id,$user_id){
+        $query = "SELECT s.student_id FROM `student_payment` s join `real_cours` as c on s.realcours_id=c.realcours_id GROUP BY s.student_id , c.realcours_id HAVING SUM(s.amount)!= (c.price);";                          
+
+        $stmt = $this->connection->prepare($query);
+
+        $stmt->execute();
+
+        return $stmt;
+    }
+
     public function update(){}
     //D
     public function delete(){}
