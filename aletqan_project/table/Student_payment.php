@@ -71,8 +71,8 @@ class Student_payment{
         return $stmt;
     }
 
-    public function not_completed_payment_query($realcours_id,$user_id){
-        $query = "SELECT s.student_id FROM `student_payment` s join `real_cours` as c on s.realcours_id=c.realcours_id GROUP BY s.student_id , c.realcours_id HAVING SUM(s.amount)!= (c.price);";                          
+    public function not_completed_payment_query(){
+        $query = "SELECT s.student_id ,c.realcours_id,c.price-sum(s.amount) as Remaining_amount  FROM `student_payment` s join `real_cours` as c on s.realcours_id=c.realcours_id GROUP BY s.student_id , c.realcours_id HAVING SUM(s.amount)< (SELECT r.price FROM `real_cours` as r where r.realcours_id =c.realcours_id )";                          
 
         $stmt = $this->connection->prepare($query);
 

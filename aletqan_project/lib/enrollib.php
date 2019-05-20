@@ -83,7 +83,7 @@ function add_payment($student_id, $group_id, $course_id, $payment)
         if (groups_is_member($group_id, $student_id)) {
             $realcours_object = select_real_course($group_id);
             $Remaining_amount = $realcours_object->price - sum_payment_student_in_group($group_id, $student_id);
-            if ($payment < $Remaining_amount) {
+            if ($payment <= $Remaining_amount) {
                 if ($payment > 0) {
                     $dbclass = new DBClass();
                     $connection = $dbclass->getConnection();
