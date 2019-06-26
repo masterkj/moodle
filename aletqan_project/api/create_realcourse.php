@@ -39,7 +39,7 @@ if(
     $group = new stdClass();
     $group->courseid =$_POST['cours_id'];
     $group->idnumber ="";
-    $group->name =$_POST['name'];
+    $group->name =$_POST['name'] . " " .  $_POST['start_date'];
     $group->description =$_POST['description'];
     $group->descriptionformat ='';
     $group->enrolmentkey ='';
@@ -51,7 +51,15 @@ if(
     // create the product
     if( ($id_group = groups_create_group($group )) )
     {
-                
+        $data = new stdclass();
+        $data->courseid=$_POST['cours_id'];
+        $data->name=$_POST['name'] . " " .  $_POST['start_date'];
+        $data->description=$_POST['description'];
+        $grouping_id = groups_create_grouping($data);
+
+        groups_assign_grouping($grouping_id,$id_group);
+        
+        
         $real_course = new Real_cours($connection);
         $real_course->realcours_id=$id_group;
         $real_course->cours_id=$_POST['cours_id'];

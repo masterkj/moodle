@@ -17,12 +17,20 @@ require_once $CFG->dirroot . '/course/externallib.php';
 require_once $CFG->dirroot . '/lib/enrollib.php';
 require_once $CFG->dirroot . '/enrol/locallib.php';
 //$add_user_to_group=$locallib-> add_user_to_group($user, $groupid);
-$result =first_payment_condition(10,350);
+$data = new stdclass();
+$data->courseid=9;
+$data->name="programing";
+$data->description="";
+groups_assign_grouping(4,12);
+//groups_create_grouping($data);
+
+
+/*$result =first_payment_condition(10,350);
 if ($result) {
     echo 'true';
 } else {
     echo 'false';
-}
+}*/
 
 //echo date('d-m-Y');
 //first_payment(1,10,60);
