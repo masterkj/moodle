@@ -25,6 +25,7 @@ if(
     !empty($_POST['summary']) &&
     !empty($_POST['marker']) &&
     !empty($_POST['have_exam']) &&
+    !empty($_POST['category']) &&
     !empty($_POST['Practical_mark']) 
 ){
  
@@ -36,7 +37,7 @@ if(
 
 
     $course_moodle = new Coursemoodle();
-    $course_moodle->category =1;
+    $course_moodle->category =$_POST['category'];
     $course_moodle->fullname =$_POST['fullname'];
     $course_moodle->shortname =$_POST['shortname'];
     $course_moodle->summary =$_POST['summary'];

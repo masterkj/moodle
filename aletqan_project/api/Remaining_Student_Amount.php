@@ -15,6 +15,8 @@ if ($count > 0) {
 
 
     $courses_not_finished = array();
+    $courses_not_finished["body"] = array();
+    $courses_not_finished["count"] = $count;
 
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
@@ -30,7 +32,7 @@ if ($count > 0) {
             "attendance_days" => $attendance_days,
         );
 
-        array_push($courses_not_finished, $p);
+        array_push($courses_not_finished["body"], $p);
     }
 
     echo json_encode($courses_not_finished);

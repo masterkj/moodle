@@ -66,6 +66,15 @@ class Real_cours{
     }
     //R
     public function readcorsenotfinished(){
+        $query = "SELECT realcours_id , cours_id ,Teacher_id , start_date ,end_date,price,attendance_days  FROM " . $this->table_name . " where end_date >= CAST(CURRENT_TIMESTAMP AS DATE)";
+        $stmt = $this->connection->prepare($query);
+
+        $stmt->execute();
+
+        return $stmt;
+    }
+
+    public function read_Remaining_Student_Amount(){
         $query = "SELECT realcours_id , cours_id ,group_id ,Teacher_id , start_date ,end_date,price,attendance_days  FROM " . $this->table_name . " where end_date >= CAST(CURRENT_TIMESTAMP AS DATE)";
         $stmt = $this->connection->prepare($query);
 
