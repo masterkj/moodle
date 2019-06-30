@@ -29,6 +29,8 @@ while($i <sizeof($courses_opject)){
     $courses_opject[$i]->Practical_mark=$courseinfo_opject->Practical_mark;
     
 
+  }else{
+   // unset($courses_opject[$i]);
   }
   $i=$i+1;
 

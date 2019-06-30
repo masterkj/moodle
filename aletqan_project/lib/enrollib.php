@@ -149,3 +149,22 @@ function sum_payment_student_in_group($group_id, $student_id)
     $st = $stmt->fetch(3);
     return $st[0];
 }
+
+function max_min_pyment($group_id)
+{
+
+    $dbclass = new DBClass();
+    $connection = $dbclass->getConnection();
+    $realcours = new Real_cours($connection);
+    $stmt = $realcours->max_min_payment($group_id);
+    if ($st = $stmt->fetch(2)) {
+        $price_course = json_decode(json_encode($st));
+        $max_min = array();
+        $max_min['min_payment']=($price_course->price * 40 / 100);
+        $max_min['max_payment']=$price_course->price;
+        return $max_min;
+
+    }
+    else{return false;}
+
+}

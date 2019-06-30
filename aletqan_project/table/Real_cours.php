@@ -87,6 +87,16 @@ class Real_cours{
     }
 
 
+    public function max_min_payment($id_group){
+        $query = "SELECT  price  FROM " . $this->table_name . " where realcours_id = " . $id_group;
+        $stmt = $this->connection->prepare($query);
+
+        $stmt->execute();
+
+        return $stmt;
+
+    }
+
 
     //U
     public function update(){}
