@@ -9,7 +9,6 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 require_once(__DIR__.'/../../config.php');
 require_once($CFG->dirroot.'/group/lib.php');
 require_once($CFG->dirroot.'/lib/grouplib.php');
-include_once '../table/groupmoodle.php';
 include_once '../table/Real_cours.php';
 include_once '../config/DBClass.php';
 
