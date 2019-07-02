@@ -9,19 +9,19 @@ require_once __DIR__ . '/../../config.php';
 require_once $CFG->dirroot . '/course/externallib.php';
 
 if (
-   // !($user_id = empty($_POST['user_id'])) &&
-   !($username = empty($_POST['username'])) &&
-   !($group_id = empty($_POST['group_id'])) &&
+    // !($user_id = empty($_POST['user_id'])) &&
+    !($username = empty($_POST['username'])) &&
+    !($group_id = empty($_POST['group_id'])) &&
     !($course_id = empty($_POST['course_id'])) &&
     !($payment = empty($_POST['payment']))
 
 ) {
-   // $user_id = $_POST['user_id'];
-   $username = $_POST['username'];
-   $user_id = $DB->get_record_sql(" SELECT `id`  FROM `mdl_user` WHERE `username` = " . "'" . $username . "'");
-   if ($user_id) {
-       $user_id = $user_id->id;
-   }else{$user_id=-1;}
+    // $user_id = $_POST['user_id'];
+    $username = $_POST['username'];
+    $user_id = $DB->get_record_sql(" SELECT `id`  FROM `mdl_user` WHERE `username` = " . "'" . $username . "'");
+    if ($user_id) {
+        $user_id = $user_id->id;
+    } else { $user_id = -1;}
     $group_id = $_POST['group_id'];
     $course_id = $_POST['course_id'];
     $payment = $_POST['payment'];
