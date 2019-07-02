@@ -40,6 +40,6 @@ foreach($courses_opject as $c_o){
 }
 
 
-print_r( $courses_opject);
+//print_r( $courses_opject);
 
-//echo(json_encode( $courses_opject));
+echo(json_encode( $courses_opject));

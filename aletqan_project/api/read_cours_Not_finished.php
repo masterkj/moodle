@@ -24,9 +24,11 @@ if ($count > 0) {
 
         extract($row);
         $cours_name = $DB->get_record_sql("SELECT `name` FROM `mdl_groups` WHERE `id`= " . $realcours_id);
+        $subject_name = $DB->get_record_sql("SELECT `fullname` FROM `mdl_course` WHERE `id`= " . $cours_id);
 
         $p  = array(
             "cours_name" => $cours_name->name,
+            "subject_name" => $subject_name->fullname,            
             "realcours_id" => $realcours_id,
             "cours_id" => $cours_id,
             "Teacher_id" => $Teacher_id,
