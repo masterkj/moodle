@@ -52,7 +52,7 @@ class payment_teacher
 
     public function select_realcours_id($realcours_id)
     {
-        $query = "SELECT realcours_id FROM `payment_teacher`";
+        $query = "SELECT realcours_id FROM `payment_teacher` where realcours_id =" . $realcours_id;
 
         $stmt = $this->connection->prepare($query);
 

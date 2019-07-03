@@ -14,6 +14,11 @@ $dbclass = new DBClass();
 $connection = $dbclass->getConnection();
 $realcours = new Real_cours($connection);
 
+$dbclass2 = new DBClass();
+$connection2 = $dbclass2->getConnection();
+$payment_teacher1 = new payment_teacher($connection2);
+
+
 $stmt = $realcours->readcorsenotfinished();
 $count = $stmt->rowCount();
 if ($count > 0) {
@@ -26,9 +31,8 @@ if ($count > 0) {
         extract($row);
         $cours_name = $DB->get_record_sql("SELECT `name` FROM `mdl_groups` WHERE `id`= " . $realcours_id);
         $subject_name = $DB->get_record_sql("SELECT `fullname` FROM `mdl_course` WHERE `id`= " . $cours_id);
-        $payment_teacher = new payment_teacher($connection);
-        $stmt = $payment_teacher->select_realcours_id($realcours_id);
-        if ($st = $stmt->fetch(2)) {
+        $stmt2 = $payment_teacher1->select_realcours_id($realcours_id);
+        if ($stt= $stmt2->fetch()) {
             $payment_teacher = true;
         } else {
             $payment_teacher = false;
