@@ -47,7 +47,7 @@ if ($count > 0) {
             "end_date" => $end_date,
             "price" => $price,
             "attendance_days" => $attendance_days,
-            "payment_teacher" => $payment_teacher,
+            "payment_teacher" => $payment_teacher
             
         );
 

@@ -5,6 +5,7 @@ include_once '../config/DBClass.php';
 require_once __DIR__ . '/../../config.php';
 require_once $CFG->dirroot . '/course/externallib.php';
 
+
 $dbclass = new DBClass();
 $connection = $dbclass->getConnection();
 $student_payment = new Student_payment($connection);
@@ -14,7 +15,10 @@ $student_opject = json_decode(json_encode($st));
 $user = $DB->get_record_sql("SELECT `firstname`,`lastname`,`email`,`username`,`phone1`,`phone2`,`city` FROM `mdl_user` WHERE `id`= 1 ");
 $i = 0;
 while ($i < sizeof($student_opject)) {
-    $user = $DB->get_record_sql("SELECT `firstname`,`lastname`,`email`,`username`,`phone1`,`phone2`,`city` FROM `mdl_user` WHERE `id`= " . $student_opject[$i]->student_id);
+    $user = $DB->get_record_sql("SELECT `firstname`,`lastname`,`email`,`username`,`phone1`,`phone2`,`city` FROM `mdl_user` WHERE `id`= 1 ");
+    $course_id = $DB->get_record_sql("SELECT `courseid` FROM `mdl_groups` WHERE id = " . $student_opject[$i]->realcours_id );
+  $subject_name = $DB->get_record_sql("SELECT `fullname` FROM `mdl_course` WHERE `id`= " . $course_id->courseid);
+
     $student_opject[$i]->firstname = $user->firstname;
     $student_opject[$i]->lastname = $user->lastname;
     $student_opject[$i]->email = $user->email;
@@ -22,9 +26,9 @@ while ($i < sizeof($student_opject)) {
     $student_opject[$i]->phone1 = $user->phone1;
     $student_opject[$i]->phone2 = $user->phone2;
     $student_opject[$i]->city = $user->city;
-
+    $student_opject[$i]->course_id = $course_id->courseid;
+   $student_opject[$i]->course_name = $subject_name->fullname;
     $i = $i + 1;
-
 }
 $student_not_payment = json_encode($student_opject);
 echo $student_not_payment;
