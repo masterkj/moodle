@@ -15,7 +15,7 @@ $student_payment = new Student_payment($connection);
 $stmt = $student_payment->not_completed_payment_query();
 $st = $stmt->fetchall(2);
 $student_opject = json_decode(json_encode($st));
-$user = $DB->get_record_sql("SELECT `firstname`,`lastname`,`email`,`username`,`phone1`,`phone2`,`city` FROM `mdl_user` WHERE `id`= 1 ");
+//$user = $DB->get_record_sql("SELECT `firstname`,`lastname`,`email`,`username`,`phone1`,`phone2`,`city` FROM `mdl_user` WHERE `id`= 1 ");
 $i = 0;
 while ($i < sizeof($student_opject)) {
     $user = $DB->get_record_sql("SELECT `firstname`,`lastname`,`email`,`username`,`phone1`,`phone2`,`city` FROM `mdl_user` WHERE `id`= " . $student_opject[$i]->student_id);

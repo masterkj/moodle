@@ -60,7 +60,7 @@ function first_payment_condition($group_id, $payment)
         $percent = $realcours_object->price * 40 / 100;
         if ($payment >= $percent) {
 
-            if ($payment < $realcours_object->price) {
+            if ($payment <= $realcours_object->price) {
                 return true;
             } else {
                 echo json_encode(array("message" => "The quantity is larger than the price of the course " . $realcours_object->price));
