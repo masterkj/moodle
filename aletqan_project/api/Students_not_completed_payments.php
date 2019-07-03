@@ -18,7 +18,7 @@ $student_opject = json_decode(json_encode($st));
 $user = $DB->get_record_sql("SELECT `firstname`,`lastname`,`email`,`username`,`phone1`,`phone2`,`city` FROM `mdl_user` WHERE `id`= 1 ");
 $i = 0;
 while ($i < sizeof($student_opject)) {
-    $user = $DB->get_record_sql("SELECT `firstname`,`lastname`,`email`,`username`,`phone1`,`phone2`,`city` FROM `mdl_user` WHERE `id`= 1 ");
+    $user = $DB->get_record_sql("SELECT `firstname`,`lastname`,`email`,`username`,`phone1`,`phone2`,`city` FROM `mdl_user` WHERE `id`= " . $student_opject[$i]->student_id);
     $course_id = $DB->get_record_sql("SELECT `courseid` FROM `mdl_groups` WHERE id = " . $student_opject[$i]->realcours_id );
   $subject_name = $DB->get_record_sql("SELECT `fullname` FROM `mdl_course` WHERE `id`= " . $course_id->courseid);
 
