@@ -29,7 +29,7 @@ if (
 
 } else {
     // set response code - 400 bad request
-    http_response_code(400);
+    http_response_code(201);
     // tell the user
     echo json_encode(array("message" => "Unable to create enroled. Data is incomplete."));
 

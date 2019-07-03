@@ -46,11 +46,11 @@ if (
                                 http_response_code(200);
                                 echo json_encode(array("message" => "add student sucssfuly."));
                             } else {
-                                http_response_code(503);
+                                http_response_code(206);
                                 echo json_encode(array("message" => "Unable to create payment and group."));
                             }
                         } else {
-                            http_response_code(503);
+                            http_response_code(206);
                             echo json_encode(array("message" => "Unable to enrol ."));
                         }
 
@@ -60,35 +60,35 @@ if (
                             http_response_code(200);
                             echo json_encode(array("message" => "add student sucssfuly."));
                         } else {
-                            http_response_code(503);
+                            http_response_code(206);
                             echo json_encode(array("message" => "Unable to create payment and group."));
                         }
                     }
 
                 } else {
-                    http_response_code(402);
+                    http_response_code(206);
                     echo json_encode(array("message" => "This payment is not accepted  ."));
                 }
 
             } else {
-                http_response_code(409);
+                http_response_code(206);
                 echo json_encode(array("message" => "This student is already in the course  ."));
             }
 
         } else {
-            http_response_code(404);
+            http_response_code(206);
             echo json_encode(array("message" => "not found group in course ."));
         }
 
     } else {
-        http_response_code(404);
+        http_response_code(206);
         // tell the user
         echo json_encode(array("message" => " user not found."));
     }
 
 } else {
     // set response code - 400 bad request
-    http_response_code(400);
+    http_response_code(206);
     // tell the user
     echo json_encode(array("message" => "Unable to create enroled. Data is incomplete."));
 

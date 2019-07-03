@@ -71,7 +71,6 @@ if (
             // set response code - 201 created
             http_response_code(201);
             // tell the user
-            echo json_encode($id_group);
             echo json_encode(array("message" => "group was created."));}
     }
 

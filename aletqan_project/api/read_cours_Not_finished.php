@@ -7,6 +7,7 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 require_once __DIR__ . '/../../config.php';
 
 include_once '../table/Real_cours.php';
+include_once '../table/payment_teacher.php';
 include_once '../config/DBClass.php';
 
 $dbclass = new DBClass();
@@ -25,7 +26,13 @@ if ($count > 0) {
         extract($row);
         $cours_name = $DB->get_record_sql("SELECT `name` FROM `mdl_groups` WHERE `id`= " . $realcours_id);
         $subject_name = $DB->get_record_sql("SELECT `fullname` FROM `mdl_course` WHERE `id`= " . $cours_id);
-
+        $payment_teacher = new payment_teacher($connection);
+        $stmt = $payment_teacher->select_realcours_id($realcours_id);
+        if ($st = $stmt->fetch(2)) {
+            $payment_teacher = true;
+        } else {
+            $payment_teacher = false;
+        }
         $p  = array(
             "cours_name" => $cours_name->name,
             "subject_name" => $subject_name->fullname,            
@@ -36,6 +43,8 @@ if ($count > 0) {
             "end_date" => $end_date,
             "price" => $price,
             "attendance_days" => $attendance_days,
+            "payment_teacher" => $payment_teacher,
+            
         );
 
         array_push($courses_not_finished, $p);
@@ -44,5 +53,5 @@ if ($count > 0) {
     echo json_encode($courses_not_finished);
 } else {
 
-    echo json_encode(array("bodyelse" => array(), "count" => 0));
+    echo json_encode(array("bodyelse" => array()));
 }

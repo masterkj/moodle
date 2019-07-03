@@ -15,7 +15,7 @@ require_once $CFG->dirroot . '/course/externallib.php';
 $dbclass = new DBClass();
 $connection = $dbclass->getConnection();
 $student_payment = new Student_payment($connection);
-$stmt = $student_payment->Remaining_Student_Amount($_POST['student_id']);
+$stmt = $student_payment->Remaining_Student_Amount($_POST['student_id'] , $_POST['realcours_id']);
 $st = $stmt->fetchall(2);
 
 $Remaining_Student_Amount = json_encode($st);

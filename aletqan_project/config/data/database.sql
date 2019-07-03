@@ -35,3 +35,12 @@ CREATE TABLE `Student_payment` (
 
 );
 
+CREATE TABLE `payment_teacher` ( 
+  `payment_teacher_id` int(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+  `realcours_id` int(11) UNSIGNED, 
+  `date` date,
+  `amount` int(11),
+      FOREIGN KEY (realcours_id) REFERENCES Real_cours (realcours_id)
+
+);
+

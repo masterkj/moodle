@@ -81,8 +81,19 @@ class Student_payment{
         return $stmt;
     }
 
-    public function Remaining_Student_Amount($student_id){
+    public function Remaining_Student_Amount1($student_id){
         $query = "SELECT s.student_id ,c.realcours_id,c.price-sum(s.amount) as Remaining_amount  FROM `student_payment` s join `real_cours` as c on s.realcours_id=c.realcours_id GROUP BY s.student_id , c.realcours_id HAVING  s.student_id = " . $student_id;                          
+
+        $stmt = $this->connection->prepare($query);
+
+        $stmt->execute();
+
+        return $stmt;
+    }
+
+    public function Remaining_Student_Amount($student_id,$realcours_id){
+
+        $query = "SELECT s.student_id ,c.realcours_id,c.price-sum(s.amount) as Remaining_amount  FROM `student_payment` s join `real_cours` as c on s.realcours_id=c.realcours_id GROUP BY s.student_id , c.realcours_id HAVING  s.student_id = " . $student_id . " and c.realcours_id = " . $realcours_id;                          
 
         $stmt = $this->connection->prepare($query);
 
